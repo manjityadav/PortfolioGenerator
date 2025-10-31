@@ -10,7 +10,7 @@ const Portfolio = require("./models/Portfolio");
 // ✅ Allow both local and deployed frontends
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://portfolio-generator-15gd.onrender.com"
+  "https://portfoliogenerator-1-2sdn.onrender.com"
 ];
 
 app.use(cors({
