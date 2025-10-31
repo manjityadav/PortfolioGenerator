@@ -47,7 +47,7 @@ export default function PortfolioForm() {
     e.preventDefault();
     try {
 
-      const res = await axios.post("http://localhost:8080/api/portfolio", formData);
+      const res = await axios.post("https://portfoliogenerator-1-2sdn.onrender.com/api/portfolio", formData);
       console.log(" Saved:", res.data);
 
     
