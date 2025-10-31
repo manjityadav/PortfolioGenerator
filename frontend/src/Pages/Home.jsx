@@ -11,15 +11,14 @@ export default function Home() {
   // ✅ Fetch all portfolios from backend
   useEffect(() => {
     axios
- 
       .get("https://portfoliogenerator-1-2sdn.onrender.com/api/portfolio")
-
       .then((res) => setPortfolios(res.data))
       .catch((err) => console.error("Error fetching portfolios:", err));
   }, []);
 
-  // ✅ Navigate to form with template name (no localStorage)
+  // ✅ Save selected template in localStorage and navigate to form
   const handleTemplateSelect = (templateName) => {
+    localStorage.setItem("Template", templateName);
     navigate("/form", { state: { template: templateName } });
   };
 
