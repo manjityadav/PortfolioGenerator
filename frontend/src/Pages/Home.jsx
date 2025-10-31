@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     axios
  
-      .get("http://localhost:8080/api/portfolio")
+      .get("https://portfoliogenerator-1-2sdn.onrender.com/api/portfolio")
 
       .then((res) => setPortfolios(res.data))
       .catch((err) => console.error("Error fetching portfolios:", err));
