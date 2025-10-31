@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 const Portfolio = () => {
@@ -7,36 +6,36 @@ const Portfolio = () => {
 
   useEffect(() => {
     const selectedTemplate = localStorage.getItem("Template");
-    setTemplate(selectedTemplate);
-
     const userData = JSON.parse(localStorage.getItem("PortfolioData"));
+    setTemplate(selectedTemplate || "Template1"); // ✅ default to Template1
     setData(userData);
-    console.log(data)
   }, []);
 
-  if (!template || !data) {
+  if (!data) {
     return (
       <div className="text-center mt-20 text-gray-600">
-        <h2 className="text-2xl font-bold">No Template Selected</h2>
-        <p>Please go back and choose a template from the Home page.</p>
+        <h2 className="text-2xl font-bold">No Portfolio Data Found</h2>
+        <p>Please go back and fill your portfolio details first.</p>
       </div>
     );
   }
 
   return (
-   <div className="min-h-screen bg-gray-50 p-6">
-  {data?.Template === "Template1" ? (
-    <Template1 data={data} />
-  ) : (
-    <Template2 data={data} />
-  )}
-</div>
+    <div className="min-h-screen bg-gray-50 p-6">
+      {template === "Template2" ? (
+        <Template2 data={data} />
+      ) : (
+        <Template1 data={data} /> // ✅ default render Template1
+      )}
+    </div>
   );
 };
 
 export default Portfolio;
 
-
+//
+// ---------------- Template 1 ----------------
+//
 const Template1 = ({ data }) => {
   const { hero, about, skills, portfolio } = data || {};
 
@@ -105,7 +104,6 @@ const Template1 = ({ data }) => {
   );
 };
 
-
 //
 // ---------------- Template 2 ----------------
 //
@@ -163,4 +161,3 @@ const Template2 = ({ data }) => {
     </div>
   );
 };
-
